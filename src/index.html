@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redux Likes</title>
+  </head>
+  <body>
+    <include src="./symbol-defs.svg"></include>
+
+    <main class="content">
+      <h1>Fresh content</h1>
+    </main>
+    <aside class="likezone"></aside>
+
+    <template id="template__article">
+      <article class="article card" data-id="#ID">
+        <a href="#URL" target="_blank">
+          <h4 class="article__title">#TITLE</h4>
+          <h5>Date: #DATE</h5>
+          <p class="article__text">#TEXT</p>
+        </a>
+        <button class="#BUTTONCLASS">
+          <svg class="icon icon-heart">
+            <use href="#icon-heart" />
+          </svg>
+          #BUTTONTEXT
+        </button>
+      </article>
+    </template>
+    <template id="template__song">
+      <article class="song card" data-id="#ID">
+        <img src="#COVER" alt="#ALBUMTITLE" />
+        <audio controls>
+          <source src="#SONG" type="audio/mpeg" />
+        </audio>
+        <h4 class="song__title">#TITLE</h4>
+        <h5>#PERFORMER</h5>
+        <button class="#BUTTONCLASS">
+          <svg class="icon icon-heart">
+            <use href="#icon-heart" />
+          </svg>
+          #BUTTONTEXT
+        </button>
+      </article>
+    </template>
+    <template id="template__photo">
+      <article class="photo card" data-id="#ID">
+        <img class="photo__img" src="#IMAGE" alt="#DESC" />
+        <h4 class="photo__title">#DESC</h4>
+        <button class="#BUTTONCLASS">
+          <svg class="icon icon-heart">
+            <use href="#icon-heart" />
+          </svg>
+          #BUTTONTEXT
+        </button>
+      </article></template
+    >
+    <script src="./js/index.js" type="module"></script>
+  </body>
+</html>

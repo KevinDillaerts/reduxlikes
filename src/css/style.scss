@@ -1,0 +1,143 @@
+@use "./base/mixins" as *;
+@use "./base/variables" as *;
+@use "./base/reset";
+@use "./base/fonts";
+@use "../icons/style.css";
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: $bodyback;
+  font-family: "Roboto Mono", monospace;
+  font-weight: 300;
+  color: $fontcolor;
+  display: flex;
+  width: 100vw;
+  overflow-x: hidden;
+  font-size: 1.5rem;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  margin-bottom: 1em;
+}
+
+h1,
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+h4 {
+  font-size: 1.75rem;
+  margin-bottom: 1em;
+}
+
+h5 {
+  margin-bottom: 0.75em;
+}
+
+h5,
+p {
+  margin-bottom: 5rem;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  &:focus {
+    outline: none;
+  }
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  background-color: $fontcolor;
+  border: none;
+  border-radius: 5px;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  &:hover,
+  :focus {
+    transform: scale(1.1);
+  }
+  & svg {
+    margin-right: 0.5em;
+  }
+  &--liked {
+    background-color: $accent;
+    color: $fontcolor;
+  }
+}
+
+.section:not(:last-child) {
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid $cardback;
+}
+
+.card {
+  position: relative;
+  border-radius: 5px;
+  padding: 1rem;
+  background-color: $cardback;
+  transition: all 300ms ease-in;
+  &:hover,
+  &:focus-within {
+    transform: scale(1.02);
+    outline: 2px solid $fontcolor;
+  }
+  & img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+  }
+  & .button {
+    position: absolute;
+    bottom: 1em;
+  }
+  & audio {
+    width: 100%;
+    margin: 1em 0;
+  }
+  & .photo {
+    &__img {
+      margin-bottom: 1em;
+    }
+    &__title {
+      margin-bottom: 5rem;
+    }
+  }
+}
+
+main {
+  min-height: 100vh;
+  width: 75%;
+  padding: 2rem;
+  & .wrapper {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  }
+}
+
+aside {
+  width: 25%;
+  background-color: $accent;
+  padding: 2rem 3rem 2rem 2rem;
+  & .wrapper {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  }
+}
