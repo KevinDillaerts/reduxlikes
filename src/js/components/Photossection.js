@@ -23,14 +23,12 @@ export default class Photossection {
   }
   render = () => {
     const data = store.getState().photos;
-    const template = document.querySelector("#template__photo").innerHTML;
     this.ref.innerHTML = data.map((photo) => addCard(photo)).join("");
   };
   setEvents() {
     this.ref.onclick = (e) => {
       e.preventDefault();
       if (e.target.classList.contains("button")) {
-        console.log(e.target.parentElement.dataset.id);
         store.dispatch(likePhoto(e.target.parentElement.dataset.id));
       }
     };

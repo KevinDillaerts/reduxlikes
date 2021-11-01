@@ -29,7 +29,6 @@ export default class Articlesection {
     this.ref.onclick = (e) => {
       e.preventDefault();
       if (e.target.classList.contains("button")) {
-        console.log(e.target.parentElement.dataset.id);
         store.dispatch(likeArticle(e.target.parentElement.dataset.id));
       }
     };
