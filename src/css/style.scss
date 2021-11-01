@@ -12,11 +12,11 @@ body {
   background-color: $bodyback;
   font-family: "Roboto Mono", monospace;
   font-weight: 300;
+  font-size: 1.5rem;
   color: $fontcolor;
   display: flex;
   width: 100vw;
   overflow-x: hidden;
-  font-size: 1.5rem;
 }
 
 h1,
@@ -124,10 +124,22 @@ main {
   min-height: 100vh;
   width: 75%;
   padding: 2rem;
+  position: relative;
   & .wrapper {
     display: grid;
     gap: 2rem;
     grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  }
+  & .likes__open {
+    position: absolute;
+    top: 2.5rem;
+    right: 5rem;
+    font-size: 2rem;
+    display: none;
+    cursor: pointer;
+    & use {
+      pointer-events: none;
+    }
   }
 }
 
@@ -135,9 +147,54 @@ aside {
   width: 25%;
   background-color: $accent;
   padding: 2rem 3rem 2rem 2rem;
+  transition: all 500ms ease-in-out;
+  min-height: 100vw;
+  position: relative;
   & .wrapper {
     display: grid;
     gap: 1rem;
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  }
+  & .likes__close {
+    position: absolute;
+    top: 2.5rem;
+    right: 5rem;
+    font-size: 2rem;
+    display: none;
+    cursor: pointer;
+    & use {
+      pointer-events: none;
+    }
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  main {
+    width: 60%;
+  }
+  aside {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  main {
+    width: 100%;
+    & .likes__open {
+      display: block;
+    }
+  }
+  aside {
+    position: absolute;
+    width: 100%;
+    min-height: 100vh;
+    right: -100%;
+    &.active {
+      z-index: 2;
+      right: 0;
+      & .likes__close {
+        display: block;
+      }
+    }
   }
 }

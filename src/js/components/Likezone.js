@@ -17,17 +17,22 @@ export default class Likezone {
       `
         <section class="photos section">
         <h2>Likes</h2>
-        <div class="likes__wrapper wrapper"></div>
+        <div class="likes__wrapper wrapper">
+        </div>
       </section>
         `
     );
     return document.querySelector(".likes__wrapper");
   }
   render = () => {
-    const stores = store.getState();
-    const array = Object.values(stores);
-    const data = array.flat().filter((item) => item.liked);
-    this.ref.innerHTML = data.map((item) => addCard(item)).join("");
+    const data = Object.values(store.getState())
+      .flat()
+      .filter((item) => item.liked);
+
+    this.ref.innerHTML =
+      data.length === 0
+        ? "<h3>No likes yet... :)</h3>"
+        : data.map((item) => addCard(item)).join("");
   };
   checkLike = (card) => {
     if (card.classList.contains("article")) {

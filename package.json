@@ -2,18 +2,18 @@
   "name": "reduxlikes",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "start": "parcel serve ./src/index.html --open 'google chrome'",
-    "build": "npm run clean && parcel build ./src/index.html --dist-dir ./out --no-source-maps",
+    "build": "npm run clean && parcel build ./src/index.html --public-url ./ --no-source-maps",
     "clean": "rm -rf ./.parcel-cache ./dist ./out",
-    "serve": "live-server ./out",
-    "deploy": "surge ./out --domain https://PUT_YOUR_SURGE_DOMAIN_HERE"
+    "serve": "live-server ./dist",
+    "deploy": "surge ./dist --domain https://kevindesign1.surge.sh"
   },
   "keywords": [],
   "author": "Kevin Dillaerts",
   "license": "ISC",
   "dependencies": {
+    "@swc/helpers": "^0.2.13",
     "nanoid": "^3.1.30",
     "parcel": "^2.0.0",
     "redux": "^4.1.2",
@@ -23,5 +23,6 @@
   "devDependencies": {
     "@parcel/transformer-sass": "^2.0.0",
     "posthtml-include": "^1.7.2"
-  }
+  },
+  "browserslist": "> 0.25%, not dead"
 }

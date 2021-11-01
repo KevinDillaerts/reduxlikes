@@ -1,4 +1,4 @@
-export default addCard = (item) => {
+export default function addCard(item) {
   const template = document.querySelector(`#template__${item.type}`).innerHTML;
   switch (item.type) {
     case "article":
@@ -30,7 +30,7 @@ export default addCard = (item) => {
     default:
       return;
   }
-};
+}
 
 function setButtonClass(item) {
   return item.liked ? "button button--liked" : "button";
