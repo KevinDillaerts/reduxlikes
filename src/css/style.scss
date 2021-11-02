@@ -91,12 +91,28 @@ a {
   border-radius: 5px;
   padding: 1rem;
   background-color: $cardback;
-  transition: all 300ms ease-in;
+  transition: all 200ms ease-in;
   &:hover,
   &:focus-within {
     transform: scale(1.02);
     outline: 2px solid $fontcolor;
   }
+  // & .article {
+  //   &__title {
+  //     display: -webkit-box;
+  //     -webkit-line-clamp: 2;
+  //     -webkit-box-orient: vertical;
+  //     overflow: hidden;
+  //     line-height: 2rem;
+  //   }
+  //   &__text {
+  //     display: -webkit-box;
+  //     -webkit-line-clamp: 4;
+  //     -webkit-box-orient: vertical;
+  //     overflow: hidden;
+  //     line-height: 1.75rem;
+  //   }
+  // }
   & img {
     display: block;
     width: 100%;

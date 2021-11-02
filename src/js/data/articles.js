@@ -9,7 +9,7 @@ export const likeArticle = (id) => ({
 
 const initialState = [
   {
-    title: "Het internet na de cookie",
+    title: "Het internet na de cookie, wat nu?",
     date: "30/10/2021",
     intro:
       "Het internet zoals wij dat al ruim 20 jaar kennen, staat op het punt radicaal te veranderen. Ik heb het over het einde van online reclame.",
@@ -33,7 +33,7 @@ const initialState = [
     date: "31/10/2021",
     intro:
       "Restaurateur Ado Campeol, dubbed 'the father of Tiramisu' by Italian media, has died aged 93.",
-    url: "https://www.hagelandactueel.be/nieuws/tienen/erfenis-van-bach-komt-naar-tienen",
+    url: "https://www.bbc.com/news/world-europe-59103658",
     liked: false,
     id: nanoid(),
     type: "article",
@@ -43,7 +43,7 @@ const initialState = [
     date: "31/10/2021",
     intro:
       "ART.27 organiseert op vrijdag 12 november om 20 u. een concert in de Kapel van de Alexianen, met een optreden van “The Legacy of Bach”.",
-    url: "https://www.bbc.com/news/world-europe-59103658",
+    url: "https://www.hagelandactueel.be/nieuws/tienen/erfenis-van-bach-komt-naar-tienen",
     liked: false,
     id: nanoid(),
     type: "article",

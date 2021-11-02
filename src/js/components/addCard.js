@@ -1,6 +1,7 @@
 export default function addCard(item) {
   switch (item.type) {
     case "article":
+      console.log(item.url);
       return `
         <article class="article card" data-id="${item.id}">
           <a href="${item.url}" target="_blank">

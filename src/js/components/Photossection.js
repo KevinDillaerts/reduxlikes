@@ -27,7 +27,6 @@ export default class Photossection {
   };
   setEvents() {
     this.ref.onclick = (e) => {
-      e.preventDefault();
       if (e.target.classList.contains("button")) {
         store.dispatch(likePhoto(e.target.parentElement.dataset.id));
       }

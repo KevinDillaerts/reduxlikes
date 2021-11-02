@@ -47,7 +47,6 @@ export default class Likezone {
   };
   setEvents() {
     this.ref.onclick = (e) => {
-      e.preventDefault();
       if (e.target.classList.contains("button")) {
         this.checkLike(e.target.parentElement);
       }

@@ -27,7 +27,6 @@ export default class Musicsection {
   };
   setEvents() {
     this.ref.onclick = (e) => {
-      e.preventDefault();
       if (e.target.classList.contains("button")) {
         store.dispatch(likeSong(e.target.parentElement.dataset.id));
       }
