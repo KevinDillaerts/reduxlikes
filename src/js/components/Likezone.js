@@ -15,7 +15,7 @@ export default class Likezone {
     this.holder.insertAdjacentHTML(
       "beforeend",
       `
-        <section class="photos section">
+        <section class="likes section">
         <h2>Likes</h2>
         <div class="likes__wrapper wrapper">
         </div>
