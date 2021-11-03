@@ -21,7 +21,19 @@
         <use href="#icon-cross" />
       </svg>
     </aside>
-
+    <div class="scroll">
+      <div class="scroll__wrapper">
+        <svg class="icon icon-arrow-up">
+          <use href="#icon-arrow-up" />
+        </svg>
+      </div>
+    </div>
     <script src="./js/index.js" type="module"></script>
+
+    <!-- Polyfill for smooth scroll to top on Safari -->
+    <script
+      defer
+      src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"
+    ></script>
   </body>
 </html>
