@@ -13,6 +13,7 @@ export default class Likezone {
     this.updateData();
     this.setEvents();
   }
+
   init() {
     this.holder.insertAdjacentHTML(
       "beforeend",
@@ -23,6 +24,7 @@ export default class Likezone {
     );
     return document.querySelector(".likes__wrapper");
   }
+
   createFilter() {
     document.querySelector(".likes__filter").innerHTML = `
     <h4 class="filter__title">Filter</h4>
@@ -38,11 +40,11 @@ export default class Likezone {
       </div>
  `;
   }
+
   filterContent() {
     const showFilter = [...document.querySelectorAll("input[type=checkbox]:checked")].map(
       (checkbox) => checkbox.value
     );
-    console.log(showFilter);
     document.querySelector(".likes__cards").innerHTML = this.data
       .map((item) => {
         if (showFilter.includes(item.type)) {
@@ -51,6 +53,7 @@ export default class Likezone {
       })
       .join("");
   }
+
   render = () => {
     if (this.data.length === 0) {
       this.ref.innerHTML = `<h3>No likes yet... :)</h3>`;
@@ -60,6 +63,7 @@ export default class Likezone {
       this.filterContent();
     }
   };
+
   updateData = () => {
     this.data = Object.values(store.getState())
       .flat()
@@ -67,6 +71,7 @@ export default class Likezone {
     this.myFilter = [...new Set(this.data.map((item) => item.type))];
     this.render();
   };
+
   checkLike = (card) => {
     if (card.classList.contains("article")) {
       store.dispatch(likeArticle(card.dataset.id));
@@ -78,6 +83,7 @@ export default class Likezone {
       store.dispatch(likePhoto(card.dataset.id));
     }
   };
+
   setEvents() {
     this.ref.onclick = (e) => {
       if (e.target.classList.contains("button")) {
