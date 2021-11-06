@@ -25,6 +25,16 @@ export default class Likezone {
     return document.querySelector(".likes__wrapper");
   }
 
+  render = () => {
+    if (this.data.length === 0) {
+      this.ref.innerHTML = `<h3>No likes yet... :)</h3>`;
+    } else {
+      this.ref.innerHTML = `<div class="likes__filter"></div><div class="likes__cards"></div>`;
+      this.createFilter();
+      this.filterContent();
+    }
+  };
+
   createFilter() {
     document.querySelector(".likes__filter").innerHTML = `
     <h4 class="filter__title">Filter</h4>
@@ -53,16 +63,6 @@ export default class Likezone {
       })
       .join("");
   }
-
-  render = () => {
-    if (this.data.length === 0) {
-      this.ref.innerHTML = `<h3>No likes yet... :)</h3>`;
-    } else {
-      this.ref.innerHTML = `<div class="likes__filter"></div><div class="likes__cards"></div>`;
-      this.createFilter();
-      this.filterContent();
-    }
-  };
 
   updateData = () => {
     this.data = Object.values(store.getState())
