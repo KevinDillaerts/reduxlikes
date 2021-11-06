@@ -16,11 +16,19 @@ new Photossection(main);
 new Likezone(likes);
 
 //mobile menu buttons
+const closeMenu = () => {
+  closeLikes.click();
+};
+
 openLikes.onclick = () => {
   likes.classList.add("active");
+  main.classList.add("blurred");
+  likes.ontransitionend = () => main.addEventListener("click", closeMenu);
 };
 closeLikes.onclick = () => {
   likes.classList.remove("active");
+  main.classList.remove("blurred");
+  likes.ontransitionend = () => main.removeEventListener("click", closeMenu);
 };
 
 //scroll to top icon
@@ -35,7 +43,6 @@ scrollIcon.onclick = () =>
 function toggleScroll(entries) {
   entries.forEach(function (entry) {
     if (entry.isIntersecting) {
-      console.log(entry);
       scrollIcon.classList.remove("active");
     } else {
       scrollIcon.classList.add("active");
