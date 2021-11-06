@@ -6,7 +6,7 @@ import Likezone from "./components/Likezone";
 
 //main variables & set-up
 const main = document.querySelector(".content");
-const likes = document.querySelector(".likezone");
+const likes = document.querySelector(".likes");
 const openLikes = document.querySelector(".likes__open");
 const closeLikes = document.querySelector(".likes__close");
 
