@@ -7,8 +7,6 @@ import Likezone from "./components/Likezone";
 //main variables & set-up
 const main = document.querySelector(".content");
 const likes = document.querySelector(".likes");
-const openLikes = document.querySelector(".likes__open");
-const closeLikes = document.querySelector(".likes__close");
 
 new Articlesection(main);
 new Musicsection(main);
@@ -16,6 +14,9 @@ new Photossection(main);
 new Likezone(likes);
 
 //mobile menu buttons
+const openLikes = document.querySelector(".likes__open");
+const closeLikes = document.querySelector(".likes__close");
+
 const closeMenu = () => {
   closeLikes.click();
 };
@@ -25,6 +26,7 @@ openLikes.onclick = () => {
   main.classList.add("blurred");
   likes.ontransitionend = () => main.addEventListener("click", closeMenu);
 };
+
 closeLikes.onclick = () => {
   likes.classList.remove("active");
   main.classList.remove("blurred");
@@ -40,15 +42,13 @@ scrollIcon.onclick = () =>
     behavior: "smooth",
   });
 
-function toggleScroll(entries) {
-  entries.forEach(function (entry) {
-    if (entry.isIntersecting) {
-      scrollIcon.classList.remove("active");
-    } else {
-      scrollIcon.classList.add("active");
-    }
-  });
-}
+const toggleScroll = (entries) => {
+  entries.forEach((entry) =>
+    entry.isIntersecting
+      ? scrollIcon.classList.remove("active")
+      : scrollIcon.classList.add("active")
+  );
+};
 
 let observer = new IntersectionObserver(toggleScroll);
 observer.observe(document.querySelector("h1"));

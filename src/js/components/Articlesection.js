@@ -1,6 +1,6 @@
 import store from "../data";
 import { likeArticle } from "../data/articles";
-import addCard from "./addCard";
+import addCard from "../helpers/addCard";
 
 export default class Articlesection {
   constructor(holder) {
@@ -9,6 +9,7 @@ export default class Articlesection {
     this.render();
     this.setEvents();
   }
+
   init() {
     this.holder.insertAdjacentHTML(
       "beforeend",
@@ -21,16 +22,21 @@ export default class Articlesection {
     );
     return document.querySelector(".articles__wrapper");
   }
+
   render = () => {
-    const data = store.getState().articles;
-    this.ref.innerHTML = data.map((article) => addCard(article)).join("");
+    this.ref.innerHTML = store
+      .getState()
+      .articles.map((article) => addCard(article))
+      .join("");
   };
+
   setEvents() {
-    this.ref.onclick = (e) => {
-      if (e.target.classList.contains("button")) {
-        store.dispatch(likeArticle(e.target.parentElement.dataset.id));
+    this.ref.onclick = ({ target } = e) => {
+      if (target.classList.contains("button")) {
+        store.dispatch(likeArticle(target.parentElement.dataset.id));
       }
     };
+
     store.subscribe(this.render);
   }
 }

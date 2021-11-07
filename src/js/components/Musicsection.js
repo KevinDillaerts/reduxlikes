@@ -1,6 +1,6 @@
 import store from "../data";
 import { likeSong } from "../data/music";
-import addCard from "./addCard";
+import addCard from "../helpers/addCard";
 
 export default class Musicsection {
   constructor(holder) {
@@ -9,6 +9,7 @@ export default class Musicsection {
     this.render();
     this.setEvents();
   }
+
   init() {
     this.holder.insertAdjacentHTML(
       "beforeend",
@@ -21,16 +22,21 @@ export default class Musicsection {
     );
     return document.querySelector(".music__wrapper");
   }
+
   render = () => {
-    const data = store.getState().music;
-    this.ref.innerHTML = data.map((song) => addCard(song)).join("");
+    this.ref.innerHTML = store
+      .getState()
+      .music.map((song) => addCard(song))
+      .join("");
   };
+
   setEvents() {
-    this.ref.onclick = (e) => {
-      if (e.target.classList.contains("button")) {
-        store.dispatch(likeSong(e.target.parentElement.dataset.id));
+    this.ref.onclick = ({ target } = e) => {
+      if (target.classList.contains("button")) {
+        store.dispatch(likeSong(target.parentElement.dataset.id));
       }
     };
+
     store.subscribe(this.render);
   }
 }

@@ -1,5 +1,6 @@
 import store from "../data";
-import addCard from "./addCard";
+import addCard from "../helpers/addCard";
+import Filter from "./Filter";
 import { likePhoto } from "../data/photos";
 import { likeSong } from "../data/music";
 import { likeArticle } from "../data/articles";
@@ -30,26 +31,10 @@ export default class Likezone {
       this.ref.innerHTML = `<h3>No likes yet... :)</h3>`;
     } else {
       this.ref.innerHTML = `<div class="likes__filter"></div><div class="likes__cards"></div>`;
-      this.createFilter();
+      new Filter(document.querySelector(".likes__filter"), this.myFilter);
       this.filterContent();
     }
   };
-
-  createFilter() {
-    document.querySelector(".likes__filter").innerHTML = `
-    <h4 class="filter__title">Filter</h4>
-    <div class="filter__wrapper">
-    ${this.myFilter
-      .map(
-        (type) =>
-          `<div class="filter__checkbox"><input type="checkbox" id="${type}" value="${type}" checked="checked"><label for="${type}"> ${
-            type + "s"
-          }</label></div>`
-      )
-      .join("")}
-      </div>
- `;
-  }
 
   filterContent() {
     const showFilter = [...document.querySelectorAll("input[type=checkbox]:checked")].map(
@@ -57,9 +42,7 @@ export default class Likezone {
     );
     document.querySelector(".likes__cards").innerHTML = this.data
       .map((item) => {
-        if (showFilter.includes(item.type)) {
-          return addCard(item);
-        }
+        if (showFilter.includes(item.type)) return addCard(item);
       })
       .join("");
   }
@@ -72,27 +55,18 @@ export default class Likezone {
     this.render();
   };
 
-  checkLike = (card) => {
-    if (card.classList.contains("article")) {
-      store.dispatch(likeArticle(card.dataset.id));
-    }
-    if (card.classList.contains("song")) {
-      store.dispatch(likeSong(card.dataset.id));
-    }
-    if (card.classList.contains("photo")) {
-      store.dispatch(likePhoto(card.dataset.id));
-    }
+  unLike = (card) => {
+    if (card.classList.contains("article")) return likeArticle(card.dataset.id);
+    if (card.classList.contains("song")) return likeSong(card.dataset.id);
+    if (card.classList.contains("photo")) return likePhoto(card.dataset.id);
   };
 
   setEvents() {
-    this.ref.onclick = (e) => {
-      if (e.target.classList.contains("button")) {
-        this.checkLike(e.target.parentElement);
-      }
-      if (e.target.type === "checkbox") {
-        this.filterContent();
-      }
+    this.ref.onclick = ({ target } = e) => {
+      if (target.classList.contains("button")) store.dispatch(this.unLike(target.parentElement));
+      if (target.type === "checkbox") this.filterContent();
     };
+
     store.subscribe(this.updateData);
   }
 }
