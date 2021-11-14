@@ -5,7 +5,7 @@ export default function addCard(item) {
         <article class="article card" data-id="${item.id}">
           <a href="${item.url}" target="_blank">
             <h4 class="article__title">${item.title}</h4>
-            <h5>Date: ${item.date}</h5>
+            <h5>Date: ${moment(item.date).format("dddd D MMMM")}</h5>
             <p class="article__text">${item.intro}</p>
           </a>
           ${setButton(item)}
